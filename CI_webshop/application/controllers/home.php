@@ -12,5 +12,26 @@ class Home extends MY_Controller {
     }
     
     // ------------------------------------------------------------------------
+
+    public function register()
+    {	
+    	$this->load->view('inc/header');
+        $this->load->view('home/register', $this->data);
+		$this->load->view('inc/footer');
+    	
+    	$email = $this->input->post('email');
+    	$address = $this->input->post('address');
+
+        $date_added =$this->input->post('date_added');     
+        $password = $this->input->post('password');
+        $this->load->model('user_model');
+        $this->user_model->register($email,$password, $address);
+
+        
+
+		var_dump($address);
+
+    }
+    // ------------------------------------------------------------------------
     
 }

@@ -30,6 +30,7 @@ class User_model extends CI_Model
         return $query->result();
     }
     
+   
     // ------------------------------------------------------------------------
     
     /**
@@ -41,6 +42,27 @@ class User_model extends CI_Model
      * 
      * @return array
      */
+    // ------------------------------------------------------------------------
+    public function register($email, $password, $address)
+    {
+        $this->form_validation->set_rules('email', 'Email', 'is_unique[user.email]');
+        if ($this->form_validation->run() == false) {
+            return false;
+        }
+
+        // Create the record
+        $data = array(
+            'email' => $email,
+            'address' => $address,
+            'date_added' => date('Y-m-j H:i:s'),
+            'password' => sha1($password . HASH_KEY),
+        );
+
+        return $this->db->insert('user', $data);
+
+        } 
+    
+    // ------------------------------------------------------------------------
     public function login($type, $email, $password)
     {
         $query = $this->db->get_where('user', [

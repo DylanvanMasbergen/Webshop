@@ -19,7 +19,7 @@ class Dashboard extends MY_Controller {
                 ) {
             redirect(site_url('dashboard/login'));
         }
-    }
+}
     
     // ------------------------------------------------------------------------
     
@@ -55,8 +55,9 @@ class Dashboard extends MY_Controller {
     // ------------------------------------------------------------------------
 
     public function home()
-    {
+    {   $this->load->view('inc/header');
         $this->load->view('dashboard/home', $this->data);
+        $this->load->view('inc/footer');
     }
     
     
