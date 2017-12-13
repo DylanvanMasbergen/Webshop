@@ -10,10 +10,9 @@ class Products extends CI_Controller {
 
 	public function index()
 	{	
+		$this->load->view('inc/header');
 		$this->data['title'] = 'Products';
-
 		$this->data['products'] = $this->Products_model->get_all();
-		
 		$this->load->view('products', $this->data);
 	}
 }

@@ -7,9 +7,9 @@ class Billing_model extends CI_Model {
 		//$this->load->database();
 	}
 
-	public function insert_customer($data)
+	public function insert_user($data)
 	{
-		$this->db->insert('customers', $data);
+		$this->db->insert('user', $data);
 
 		$id = $this->db->insert_id();
 		

@@ -43,7 +43,7 @@ class User_model extends CI_Model
      * @return array
      */
     // ------------------------------------------------------------------------
-    public function register($email, $password, $address)
+    public function register($email, $password, $address, $phone)
     {
         $this->form_validation->set_rules('email', 'Email', 'is_unique[user.email]');
         if ($this->form_validation->run() == false) {
@@ -54,6 +54,7 @@ class User_model extends CI_Model
         $data = array(
             'email' => $email,
             'address' => $address,
+            'phone' => $phone,
             'date_added' => date('Y-m-j H:i:s'),
             'password' => sha1($password . HASH_KEY),
         );
@@ -76,7 +77,7 @@ class User_model extends CI_Model
     
     // ------------------------------------------------------------------------
     
-    public function create($email, $password)
+    public function create($email, $address, $phone, $password)
     {
         $this->form_validation->set_rules('email', 'Email', 'is_unique[user.email]');
         if ($this->form_validation->run() == false) {
@@ -86,6 +87,8 @@ class User_model extends CI_Model
         // Create the record
         $result = $this->db->insert('user', [
             'email' => $email,
+            'address' => $address,
+            'phone' => $phone,
             'password' => sha1($password . HASH_KEY),
             'date_added' => date('Y-m-j H:i:s'),
         ]);

@@ -5,6 +5,7 @@
     Email: <input type="email" name="email" />
     Address: <input type="text" name="address"  />
     Password: <input type="password" name="password" />
+    Phone: <input type="number" name="phone" /> 
     <input type="submit" />
 
 </form>

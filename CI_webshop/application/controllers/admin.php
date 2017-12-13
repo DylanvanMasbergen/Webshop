@@ -32,13 +32,16 @@ class Admin extends MY_Controller {
     // ------------------------------------------------------------------------
     
     public function home()
-    {
+    {   
+        $this->load->view('inc/header');
+      
         $this->load->model('user_model');
         
         $this->data['users'] = $this->user_model->get();
         
-        
         $this->load->view('admin/home', $this->data);
+
+        $this->load->view('inc/footer');
     }
     
     // ------------------------------------------------------------------------
@@ -78,11 +81,17 @@ class Admin extends MY_Controller {
     
     public function create_user()
     {
+
         $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $address = $this->input->post('address');
+        $phone = $this->input->post('phone');
+
         $date_added =$this->input->post('date_added');     
+        $password = $this->input->post('password');
+
         $this->load->model('user_model');
-        $this->user_model->create($email, $password, $date_added);
+        $this->user_model->create($email, $address, $phone, $date_added, $password);
+
     }
     
     // ------------------------------------------------------------------------
@@ -91,9 +100,12 @@ class Admin extends MY_Controller {
     {
         $this->load->model('user_model');
         echo $this->user_model->delete($user_id);
+        redirect(site_url('admin/home'));
         
     }
     
     // ------------------------------------------------------------------------
 
+
+    // ------------------------------------------------------------------------
 }

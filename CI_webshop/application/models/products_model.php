@@ -12,4 +12,9 @@ class Products_model extends CI_Model {
 		$query = $this->db->get('products');
 		return $query->result_array();
 	}
+
+	public function create_product()
+	{
+		
+	}
 }

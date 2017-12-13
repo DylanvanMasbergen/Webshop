@@ -18,14 +18,13 @@ class Billing extends CI_Controller {
 	
 	public function save_order()
 	{
-		$customer = array(
-			'name' 		=> $this->input->post('name'),
+		$user = array(
 			'email' 	=> $this->input->post('email'),
 			'address' 	=> $this->input->post('address'),
 			'phone' 	=> $this->input->post('phone')
 		);		
 
-		$cust_id = $this->Billing_model->insert_customer($customer);
+		$cust_id = $this->Billing_model->insert_user($user);
 
 		$order = array(
 			'date' 			=> date('Y-m-d'),

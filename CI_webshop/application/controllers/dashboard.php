@@ -32,7 +32,8 @@ class Dashboard extends MY_Controller {
     // ------------------------------------------------------------------------
     
     public function login($submit = null)
-    {
+    {   
+        $this->load->view('inc/header');
         if ($submit == null) {
             $this->load->view('dashboard/login', $this->data);
             return true;
@@ -50,6 +51,7 @@ class Dashboard extends MY_Controller {
         } else {
             redirect(site_url('dashboard/login'));
         }
+        $this->load->view('inc/footer');
     }
     
     // ------------------------------------------------------------------------
